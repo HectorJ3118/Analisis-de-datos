@@ -74,7 +74,8 @@ def apagar_calculadora():
     btn8.config(state='disabled', bg='gray'),btans.config(state='disabled', bg='gray')
     btp.config(state='disabled', bg='gray'),btnsqr.config(state='disabled', bg='gray')
     btex.config(state='disabled', bg='gray'),btig.config(state='disabled', bg='gray')
-
+    entrada.config(state='disabled',bg='pink')
+    anterior.config(state='disabled',bg='black')
 def encender_calculadora():
     numeroPantalla.set("0")
     
@@ -88,7 +89,8 @@ def encender_calculadora():
     btn8.config(state='normal', bg='#1D3A6D'),btans.config(state='normal', bg='#C9343E')
     btp.config(state='normal', bg='#1D3A6D'),btnsqr.config(state='normal', bg='#C9343E')
     btex.config(state='normal', bg='#C9343E'),btig.config(state='normal', bg='#C9343E')
-
+    entrada.config(state='normal',bg='#9DDF03')
+    anterior.config(state='normal',bg='#9DDF03')
 
 def numeroPulsado(num):
     global numeroActual, tienePunto, esperandoNuevoNumero
