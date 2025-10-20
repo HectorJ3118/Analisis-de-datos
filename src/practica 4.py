@@ -19,16 +19,26 @@
 class Clase_Base:
     def __init__(self):
       self.x=0
-      self.fx=tuple
+      self.fx=[]
       self.fdx=0
-    
-    def Pedir_Polinomio(self):
-       grado=int(input('Ingresa el grado del polinomio')) 
+      self.polinomio= {}
+    def pedir_Polinomio(self):
+      self.grado=int(input('Ingresa el grado del polinomio: ')) 
+      
+      for i in range (self.grado,0,-1):
+        coeficiente=float(input(f'Escriba el coeficiente del termino (orden descendente): '))
+        self.fx=[coeficiente,i]
+        self.polinomio[i]=self.fx
 
-       for i in range (grado,0):
-         print(i)
+    def imprimir_Polinomio(self):
+
+      for i in range(self.grado,0,-1):
+         print(self.polinomio[i])
+         
 
 caculo=Clase_Base()
-caculo.Pedir_Polinomio()       
+caculo.pedir_Polinomio()  
+caculo.imprimir_Polinomio()     
         
+
 
