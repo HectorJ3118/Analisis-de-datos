@@ -35,7 +35,11 @@ class Clase_Base:
       for i in range(self.grado,0,-1):
          print(self.polinomio[i])
          
-
+# ===============================================================================
+# ||                                                                            ||
+# ||        P R O G R A M A / F U N C I O N    P R I N C I P A L                ||
+# ||                                                                            ||
+# ===============================================================================
 caculo=Clase_Base()
 caculo.pedir_Polinomio()  
 caculo.imprimir_Polinomio()     
