@@ -3,8 +3,8 @@
 # **    Plataforma     : VS Code
 # **    Fecha/Hora     : 22/09/2025
 # **    Descripción    : Practica acerca del metodo de biseccion el cual calcula
-# **    la raiz del polinomio que este en el rango dado por el usuario
-# **    funciones mas importantes.
+# **    la raiz del polinomio que este en el rango dado por el usuario.
+# **    
 # **   By             : Hector Jimenez
 # **   contact        : hjimenezm2101@alumno.ipn.mx
 #  #############################################################################
@@ -21,7 +21,7 @@ class ClaseBase:
         self.x = None
         self.fx = None
         self.fdx = None
-        self.polinomio = {}  # {grado: coeficiente}
+        self.polinomio = {}  #
 
     def pedir_polinomio(self):
         print("\n--- Ingreso del Polinomio ---")
@@ -116,20 +116,20 @@ class Biseccion(ClaseBase):
            
             if self.error_aparente is not None and self.error_aparente <= self.tolerancia:
                 break
-
-        print("-" * 100)
-        print(f"Raíz aproximada: {self.xr:.6f}")
-        print(f"Con un error de {self.error_aparente:.6f}% tras {iteracion} iteraciones.\n")
-
+            
+        return(f"Raíz aproximada: {self.xr:.6f}\n",
+        f"Con un error de {self.error_aparente:.6f} % tras {iteracion} iteraciones.\n")
+           
 
 # ===============================================================================
 # ||                                                                            ||
 # ||        P R O G R A M A / F U N C I O N    P R I N C I P A L                ||
 # ||                                                                            ||
 # ===============================================================================
-
+'''
 metodo = Biseccion()
 metodo.pedir_polinomio()
 metodo.imprimir_polinomio()
 metodo.pedir_datos()
 metodo.calcular()
+'''

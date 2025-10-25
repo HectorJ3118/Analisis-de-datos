@@ -1,5 +1,5 @@
 # ############################################################################
-# **    Proyecto       : Practica 1, Calculadora utilizando tkinter
+# **    Proyecto       : Practica 
 # **    Plataforma     : VS Code
 # **    Fecha/Hora     : 22/09/2025
 # **    Descripción    : Practica acerca del metodo de biseccion el cual calcula
@@ -47,7 +47,7 @@ class ClaseBase:
         return resultado
 
 
-class Regla_Falsa(ClaseBase):
+class Biseccion(ClaseBase):
     def __init__(self):
         super().__init__()
         self.xl = None
@@ -59,23 +59,22 @@ class Regla_Falsa(ClaseBase):
         self.iteraciones = []
 
     def pedir_datos(self):
-        print("\n--- Datos para el Método de Regla Falsa ---")
+        print("\n--- Datos para el Método de Bisección ---")
         self.xl = float(input("Ingrese el límite inferior (xl): "))
         self.xu = float(input("Ingrese el límite superior (xu): "))
         self.tolerancia = float(input("Ingrese la tolerancia (%): "))
         print()
 
     def calcular(self):
-
         while self.evaluar_polinomio(self.xl) * self.evaluar_polinomio(self.xu) > 0:
             print("No hay cambio de signo en el intervalo o hay mas de una solucion en el intervalo. Intente con otro rango.")
             self.pedir_datos()
 
         iteracion = 0
-        self.xr = self.xu-(self.evaluar_polinomio(self.xu)*(self.xl-self.xu))/(self.evaluar_polinomio(self.xl)-self.evaluar_polinomio(self.xu))
+        self.xr = (self.xl + self.xu) / 2
         xr_anterior = self.xr
 
-        print("\n--- Iteraciones del Método de regla falsa ---")
+        print("\n--- Iteraciones del Método de Bisección ---")
         print(f"{'Iter':<5}{'xl':<10}{'xu':<10}{'xr':<10}{'f(xl)':<12}{'f(xu)':<12}{'f(xr)':<12}{'f(xl)*f(xr)':<15}{'E_aparente(%)':<15}")
         print("-" * 100)
 
@@ -108,12 +107,11 @@ class Regla_Falsa(ClaseBase):
 
             if fxl * fxr < 0:
                 self.xu = self.xr
-                fxu=fxr
             else:
                 self.xl = self.xr
-                fxl=fxr
+
             xr_anterior = self.xr
-            self.xr = self.xu - (fxu * (self.xl - self.xu)) / (fxl - fxu)
+            self.xr = (self.xl + self.xu) / 2
 
            
             if self.error_aparente is not None and self.error_aparente <= self.tolerancia:
@@ -130,7 +128,7 @@ class Regla_Falsa(ClaseBase):
 # ||                                                                            ||
 # ===============================================================================
 
-metodo = Regla_Falsa()
+metodo = Biseccion()
 metodo.pedir_polinomio()
 metodo.imprimir_polinomio()
 metodo.pedir_datos()
