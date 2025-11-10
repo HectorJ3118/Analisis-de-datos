@@ -1,10 +1,10 @@
 # ############################################################################
-# **    Proyecto       : Practica 3, Metodo de Biseccion
+# **    Proyecto       : Practica 1, Calculadora utilizando tkinter
 # **    Plataforma     : VS Code
 # **    Fecha/Hora     : 22/09/2025
 # **    Descripción    : Practica acerca del metodo de biseccion el cual calcula
-# **    la raiz del polinomio que este en el rango dado por el usuario.
-# **    
+# **    la raiz del polinomio que este en el rango dado por el usuario
+# **    funciones mas importantes.
 # **   By             : Hector Jimenez
 # **   contact        : hjimenezm2101@alumno.ipn.mx
 #  #############################################################################
@@ -12,8 +12,7 @@
 # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # :                       Librerias / Bibliotecas / Modulos                      |
 # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-import tkinter as tk
-from tkinter import messagebox
+
 # +-------------------------------------------------------------------------------
 # |       DEFINICION Y DESARROLLO DE CLASES O FUNCIONES DE PROGRAMADOR            |
 # +-------------------------------------------------------------------------------
@@ -22,18 +21,16 @@ class ClaseBase:
         self.x = None
         self.fx = None
         self.fdx = None
-        self.polinomio = {}  #
+        self.polinomio = {}  
 
     def pedir_polinomio(self):
-        print("\n ---Ingreso del Polinomio--- ")
+        print("\n--- Ingreso del Polinomio ---")
         grado = int(input("Ingrese el grado del polinomio: "))
         for i in range(grado, -1, -1):
             coef = float(input(f"Ingrese el coeficiente de x^{i}: "))
             self.polinomio[i] = coef
         print("\nPolinomio ingresado correctamente.\n")
-    def pedir_polinomio_GUI(self,ventana):
-        pass
-        
+
     def imprimir_polinomio(self):
         print("f(x) = ", end="")
         terminos = []
@@ -43,14 +40,14 @@ class ClaseBase:
         print(" ".join(terminos))
 
     def evaluar_polinomio(self, x):
-        
+        """Evalúa el polinomio en el valor x"""
         resultado = 0
         for g, c in self.polinomio.items():
             resultado += c * (x ** g)
         return resultado
 
 
-class Biseccion(ClaseBase):
+class Regla_Falsa(ClaseBase):
     def __init__(self):
         super().__init__()
         self.xl = None
@@ -62,22 +59,23 @@ class Biseccion(ClaseBase):
         self.iteraciones = []
 
     def pedir_datos(self):
-        print("\n ---Datos para el Método de Bisección--- ")
+        print("\n--- Datos para el Método de Regla Falsa ---")
         self.xl = float(input("Ingrese el límite inferior (xl): "))
         self.xu = float(input("Ingrese el límite superior (xu): "))
         self.tolerancia = float(input("Ingrese la tolerancia (%): "))
         print()
 
     def calcular(self):
+
         while self.evaluar_polinomio(self.xl) * self.evaluar_polinomio(self.xu) > 0:
             print("No hay cambio de signo en el intervalo o hay mas de una solucion en el intervalo. Intente con otro rango.")
             self.pedir_datos()
 
         iteracion = 0
-        self.xr = (self.xl + self.xu) / 2
+        self.xr = self.xu-(self.evaluar_polinomio(self.xu)*(self.xl-self.xu))/(self.evaluar_polinomio(self.xl)-self.evaluar_polinomio(self.xu))
         xr_anterior = self.xr
 
-        print("\n--- Iteraciones del Método de Bisección ---")
+        print("\n--- Iteraciones del Método de regla falsa ---")
         print(f"{'Iter':<5}{'xl':<10}{'xu':<10}{'xr':<10}{'f(xl)':<12}{'f(xu)':<12}{'f(xr)':<12}{'f(xl)*f(xr)':<15}{'E_aparente(%)':<15}")
         print("-" * 100)
 
@@ -110,30 +108,30 @@ class Biseccion(ClaseBase):
 
             if fxl * fxr < 0:
                 self.xu = self.xr
+                fxu=fxr
             else:
                 self.xl = self.xr
-
+                fxl=fxr
             xr_anterior = self.xr
-            self.xr = (self.xl + self.xu) / 2
+            self.xr = self.xu - (fxu * (self.xl - self.xu)) / (fxl - fxu)
 
            
             if self.error_aparente is not None and self.error_aparente <= self.tolerancia:
                 break
-            
+
         print("-" * 100)
         print(f"Raíz aproximada: {self.xr:.6f}")
         print(f"Con un error de {self.error_aparente:.6f}% tras {iteracion} iteraciones.\n")
-        
-    
+
 # ===============================================================================
 # ||                                                                            ||
 # ||        P R O G R A M A / F U N C I O N    P R I N C I P A L                ||
 # ||                                                                            ||
 # ===============================================================================
-'''
-metodo = Biseccion()
+
+metodo = Regla_Falsa()
 metodo.pedir_polinomio()
 metodo.imprimir_polinomio()
 metodo.pedir_datos()
 metodo.calcular()
-'''
+#14 ITERACIONES

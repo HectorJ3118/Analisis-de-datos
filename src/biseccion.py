@@ -3,8 +3,8 @@
 # **    Plataforma     : VS Code
 # **    Fecha/Hora     : 22/09/2025
 # **    Descripción    : Practica acerca del metodo de biseccion el cual calcula
-# **    la raiz del polinomio que este en el rango dado por el usuario.
-# **    
+# **    la raiz del polinomio que este en el rango dado por el usuario
+# **    funciones mas importantes.
 # **   By             : Hector Jimenez
 # **   contact        : hjimenezm2101@alumno.ipn.mx
 #  #############################################################################
@@ -12,8 +12,7 @@
 # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # :                       Librerias / Bibliotecas / Modulos                      |
 # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-import tkinter as tk
-from tkinter import messagebox
+
 # +-------------------------------------------------------------------------------
 # |       DEFINICION Y DESARROLLO DE CLASES O FUNCIONES DE PROGRAMADOR            |
 # +-------------------------------------------------------------------------------
@@ -22,18 +21,16 @@ class ClaseBase:
         self.x = None
         self.fx = None
         self.fdx = None
-        self.polinomio = {}  #
+        self.polinomio = {}  
 
     def pedir_polinomio(self):
-        print("\n ---Ingreso del Polinomio--- ")
+        print("\n--- Ingreso del Polinomio ---")
         grado = int(input("Ingrese el grado del polinomio: "))
         for i in range(grado, -1, -1):
             coef = float(input(f"Ingrese el coeficiente de x^{i}: "))
             self.polinomio[i] = coef
         print("\nPolinomio ingresado correctamente.\n")
-    def pedir_polinomio_GUI(self,ventana):
-        pass
-        
+
     def imprimir_polinomio(self):
         print("f(x) = ", end="")
         terminos = []
@@ -62,7 +59,7 @@ class Biseccion(ClaseBase):
         self.iteraciones = []
 
     def pedir_datos(self):
-        print("\n ---Datos para el Método de Bisección--- ")
+        print("\n--- Datos para el Método de Bisección ---")
         self.xl = float(input("Ingrese el límite inferior (xl): "))
         self.xu = float(input("Ingrese el límite superior (xu): "))
         self.tolerancia = float(input("Ingrese la tolerancia (%): "))
@@ -119,21 +116,21 @@ class Biseccion(ClaseBase):
            
             if self.error_aparente is not None and self.error_aparente <= self.tolerancia:
                 break
-            
+
         print("-" * 100)
         print(f"Raíz aproximada: {self.xr:.6f}")
         print(f"Con un error de {self.error_aparente:.6f}% tras {iteracion} iteraciones.\n")
-        
-    
+
+
 # ===============================================================================
 # ||                                                                            ||
 # ||        P R O G R A M A / F U N C I O N    P R I N C I P A L                ||
 # ||                                                                            ||
 # ===============================================================================
-'''
+
 metodo = Biseccion()
 metodo.pedir_polinomio()
 metodo.imprimir_polinomio()
 metodo.pedir_datos()
 metodo.calcular()
-'''
+#DEBEN SER 21 ITERACIONES
