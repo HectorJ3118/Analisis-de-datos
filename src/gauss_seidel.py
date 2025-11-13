@@ -29,7 +29,7 @@ class Clase_Base:
         self.sistema=[]
         for i in range(3):
             print(f'Ingrese los datos de la fila {i+1}')
-            self.fila = list(map(float, input(f"Fila {i+1} (4 valores separados por espacio): ").split()))
+            self.fila = list(map(float, input(f"Fila {i+1}: ").split()))
             self.sistema.append(self.fila)
            
     def mostrar_sistema(self):
@@ -98,9 +98,10 @@ class Seidel(Clase_Base):
         print(F'X2: {self.x2:.6f}') 
         print(F'X3: {self.x3:.6f}') 
         print(f"Con un error de {self.error:.6f}% tras {self.iteraciones} iteraciones.\n")
-
+'''
 metodo=Seidel()
 metodo.ingresar_sistema()
 metodo.pedir_datos()
-metodo.mostrar_sistema()
+metodo.mostrar_sistema() 
 metodo.metodo()
+'''

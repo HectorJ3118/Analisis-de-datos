@@ -50,7 +50,7 @@ class GaussJordan(MatrizBase):
         print("\n Matriz reducida por Gauss-Jordan:")
         self.imprimir_paso(A)
 
-        print("\Soluciones:")
+        
         for i, var in enumerate(['x1', 'x2', 'x3']):
             print(f"{var} = {A[i, -1]:.4f}")
 
@@ -61,12 +61,12 @@ class GaussJordan(MatrizBase):
             print(f"│ {fila[0]:8.4f} {fila[1]:8.4f} {fila[2]:8.4f} | {fila[3]:8.4f} │")
         print("└                               ┘")
 
+'''
 
-if __name__ == "__main__":
-    print("=== Resolver sistema 3x3 por el método de Gauss-Jordan ===\n")
+    print("Sistema 3x3 por metodo de Gauss-Jordan\n")
 
-    solver = GaussJordan()
-    solver.pedir_matriz()
-    solver.imprimir_matriz()
-    solver.resolver()
-
+    sistema = GaussJordan()
+    sistema.pedir_matriz()
+    sistema.imprimir_matriz()
+    sistema.resolver()
+'''
