@@ -22,7 +22,7 @@ class ClaseBase:
         self.x = None
         self.fx = None
         self.fdx = None
-        self.polinomio = {}  #
+        self.polinomio = {}  
 
     def pedir_polinomio(self):
         print("\n ---Ingreso del Polinomio--- ")
