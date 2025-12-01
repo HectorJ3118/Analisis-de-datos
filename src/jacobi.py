@@ -43,7 +43,6 @@ class Jacobi(Clase_Base):
     def __init__(self):
         super().__init__()
         self.error=None
-        self.iteracion=[]
         self.tolerancia=0.0001
         self.iteraciones=0
         self.a=0
@@ -79,18 +78,7 @@ class Jacobi(Clase_Base):
                 self.error=(self.error1+self.error2+self.error3)/3
 
             print(f"{self.iteraciones:<5}{self.a:<10.5f}{self.b:<10.5f}{self.c:<10.5f}{self.error1:<12.5f}{self.error2:<12.5f}{self.error3:<12.5f}{self.error:<15.5f}{'-' if self.error is None else f'{self.error:<15.5f}'}")
-            
-            self.iteracion.append({
-                "iter": self.iteraciones,
-                "a": self.a,
-                "b": self.b,
-                "c": self.c,
-                "Error 1": self.error1,
-                "Error 2": self.error2,
-                "Error 3": self.error3,
-                "Error": self.error,
-                
-            })
+
             self.x1,self.x2,self.x3=self.a,self.b,self.c
             if self.iteraciones > 1 and self.error <= self.tolerancia:
                 break    
@@ -101,9 +89,10 @@ class Jacobi(Clase_Base):
         print(F'X2: {self.x2:.6f}') 
         print(F'X3: {self.x3:.6f}') 
         print(f"Con un error de {self.error:.6f}% tras {self.iteraciones} iteraciones.\n")
-
+'''
 metodo=Jacobi()
 metodo.ingresar_sistema()
 metodo.pedir_datos()
 metodo.mostrar_sistema()
 metodo.metodo()
+'''
