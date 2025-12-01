@@ -31,9 +31,7 @@ class ClaseBase:
             coef = float(input(f"Ingrese el coeficiente de x^{i}: "))
             self.polinomio[i] = coef
         print("\nPolinomio ingresado correctamente.\n")
-    def pedir_polinomio_GUI(self,ventana):
-        pass
-        
+
     def imprimir_polinomio(self):
         print("f(x) = ", end="")
         terminos = []
@@ -59,7 +57,7 @@ class Biseccion(ClaseBase):
         self.tolerancia = None
         self.error_aparente = None
         self.error_verdadero = None
-        self.iteraciones = []
+        
 
     def pedir_datos(self):
         print("\n ---Datos para el Método de Bisección--- ")
@@ -95,19 +93,6 @@ class Biseccion(ClaseBase):
 
             print(f"{iteracion:<5}{self.xl:<10.5f}{self.xu:<10.5f}{self.xr:<10.5f}{fxl:<12.5f}{fxu:<12.5f}{fxr:<12.5f}{producto:<15.5f}{'-' if self.error_aparente is None else f'{self.error_aparente:<15.5f}'}")
 
-            
-            self.iteraciones.append({
-                "iter": iteracion,
-                "xl": self.xl,
-                "xu": self.xu,
-                "xr": self.xr,
-                "fxl": fxl,
-                "fxu": fxu,
-                "fxr": fxr,
-                "producto": producto,
-                "error": self.error_aparente
-            })
-
             if fxl * fxr < 0:
                 self.xu = self.xr
             else:
@@ -130,10 +115,10 @@ class Biseccion(ClaseBase):
 # ||        P R O G R A M A / F U N C I O N    P R I N C I P A L                ||
 # ||                                                                            ||
 # ===============================================================================
-'''
+
 metodo = Biseccion()
 metodo.pedir_polinomio()
 metodo.imprimir_polinomio()
 metodo.pedir_datos()
 metodo.calcular()
-'''
+
